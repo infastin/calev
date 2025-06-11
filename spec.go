@@ -399,7 +399,7 @@ func wdToMd(x uint8, s int) uint32 {
 	const n = 7
 
 	s %= n
-	x = x & (1<<n - 1)
+	x &= 1<<n - 1
 	x = x>>s | x<<(n-s)
 
 	x0 := uint32(x)
