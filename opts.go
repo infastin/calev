@@ -19,7 +19,7 @@ func Month(months ...time.Month) SpecOpt {
 	}
 }
 
-// Adds month to the month constraint that fall in the specified range.
+// Adds months to the month constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
 func EveryMonth(low, high time.Month, step int) SpecOpt {
