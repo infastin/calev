@@ -33,7 +33,7 @@ func TestClock(t *testing.T) {
 			wrapHour: true,
 		},
 		{
-			opts: []calev.SpecOpt{calev.EveryMinute(3, 5, 1)},
+			opts: []calev.SpecOpt{calev.MinuteRange(3, 5, 1)},
 			expected: []time.Time{
 				time.Date(2025, time.January, 1, 23, 3, 0, 0, time.UTC),
 				time.Date(2025, time.January, 1, 23, 4, 0, 0, time.UTC),
@@ -54,7 +54,7 @@ func TestClock(t *testing.T) {
 			},
 		},
 		{
-			opts: []calev.SpecOpt{calev.EveryHour(10, 14, 1), calev.Minute(0)},
+			opts: []calev.SpecOpt{calev.HourRange(10, 14, 1), calev.Minute(0)},
 			expected: []time.Time{
 				time.Date(2025, time.January, 2, 10, 0, 0, 0, time.UTC),
 				time.Date(2025, time.January, 2, 11, 0, 0, 0, time.UTC),
@@ -64,7 +64,7 @@ func TestClock(t *testing.T) {
 			},
 		},
 		{
-			opts: []calev.SpecOpt{calev.Hour(0), calev.EveryMinute(5, 7, 1)},
+			opts: []calev.SpecOpt{calev.Hour(0), calev.MinuteRange(5, 7, 1)},
 			expected: []time.Time{
 				time.Date(2025, time.January, 2, 0, 5, 0, 0, time.UTC),
 				time.Date(2025, time.January, 2, 0, 6, 0, 0, time.UTC),
@@ -155,7 +155,7 @@ func TestDay(t *testing.T) {
 			},
 		},
 		{
-			opts: []calev.SpecOpt{calev.EveryDay(1, 14, 3)},
+			opts: []calev.SpecOpt{calev.DayRange(1, 14, 3)},
 			expected: []time.Time{
 				time.Date(2025, time.January, 4, 0, 0, 0, 0, time.UTC),
 				time.Date(2025, time.January, 7, 0, 0, 0, 0, time.UTC),
@@ -225,7 +225,7 @@ func TestLastDay(t *testing.T) {
 			},
 		},
 		{
-			opts: []calev.SpecOpt{calev.EveryLastDay(1, 5, 2)},
+			opts: []calev.SpecOpt{calev.LastDayRange(1, 5, 2)},
 			expected: []time.Time{
 				time.Date(2025, time.January, 27, 0, 0, 0, 0, time.UTC),
 				time.Date(2025, time.January, 29, 0, 0, 0, 0, time.UTC),
@@ -293,7 +293,7 @@ func TestWeekday(t *testing.T) {
 			},
 		},
 		{
-			opts: []calev.SpecOpt{calev.EveryWeekday(time.Monday, time.Friday, 1)},
+			opts: []calev.SpecOpt{calev.WeekdayRange(time.Monday, time.Friday, 1)},
 			expected: []time.Time{
 				time.Date(2025, time.January, 2, 0, 0, 0, 0, time.UTC),
 				time.Date(2025, time.January, 3, 0, 0, 0, 0, time.UTC),
@@ -364,7 +364,7 @@ func TestWeekdayStrict(t *testing.T) {
 		},
 		{
 			opts: []calev.SpecOpt{
-				calev.EveryDay(1, 7, 1),
+				calev.DayRange(1, 7, 1),
 				calev.WeekdayStrict(time.Monday, time.Friday),
 			},
 			expected: []time.Time{
@@ -376,7 +376,7 @@ func TestWeekdayStrict(t *testing.T) {
 		},
 		{
 			opts: []calev.SpecOpt{
-				calev.EveryDay(20, 31, 1),
+				calev.DayRange(20, 31, 1),
 				calev.WeekdayStrict(time.Monday, time.Friday),
 			},
 			expected: []time.Time{
@@ -391,7 +391,7 @@ func TestWeekdayStrict(t *testing.T) {
 		},
 		{
 			opts: []calev.SpecOpt{
-				calev.EveryLastDay(1, 7, 1),
+				calev.LastDayRange(1, 7, 1),
 				calev.WeekdayStrict(time.Monday, time.Friday),
 			},
 			expected: []time.Time{
@@ -403,7 +403,7 @@ func TestWeekdayStrict(t *testing.T) {
 		},
 		{
 			opts: []calev.SpecOpt{
-				calev.EveryLastDay(1, 20, 1),
+				calev.LastDayRange(1, 20, 1),
 				calev.WeekdayStrict(time.Monday, time.Friday),
 			},
 			expected: []time.Time{
@@ -465,7 +465,7 @@ func TestMonth(t *testing.T) {
 			wrapLast: true,
 		},
 		{
-			opts: []calev.SpecOpt{calev.EveryMonth(time.January, time.March, 1)},
+			opts: []calev.SpecOpt{calev.MonthRange(time.January, time.March, 1)},
 			expected: []time.Time{
 				time.Date(2025, time.February, 1, 0, 0, 0, 0, time.UTC),
 				time.Date(2025, time.March, 1, 0, 0, 0, 0, time.UTC),
@@ -474,7 +474,7 @@ func TestMonth(t *testing.T) {
 			wrapLast: true,
 		},
 		{
-			opts: []calev.SpecOpt{calev.EveryMonth(time.January, time.September, 2)},
+			opts: []calev.SpecOpt{calev.MonthRange(time.January, time.September, 2)},
 			expected: []time.Time{
 				time.Date(2025, time.March, 1, 0, 0, 0, 0, time.UTC),
 				time.Date(2025, time.May, 1, 0, 0, 0, 0, time.UTC),
@@ -487,7 +487,7 @@ func TestMonth(t *testing.T) {
 		{
 			opts: []calev.SpecOpt{
 				calev.Month(time.February, time.November),
-				calev.EveryMonth(time.January, time.September, 2),
+				calev.MonthRange(time.January, time.September, 2),
 			},
 			expected: []time.Time{
 				time.Date(2025, time.February, 1, 0, 0, 0, 0, time.UTC),

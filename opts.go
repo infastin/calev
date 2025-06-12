@@ -22,7 +22,7 @@ func Month(months ...time.Month) SpecOpt {
 // Adds months to the month constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
-func EveryMonth(low, high time.Month, step int) SpecOpt {
+func MonthRange(low, high time.Month, step int) SpecOpt {
 	low = posMod(low-1, 12)
 	high = posMod(negDefault(high, 12)-1, 12)
 	high = max(low, high)
@@ -48,7 +48,7 @@ func Day(days ...int) SpecOpt {
 // Adds days to the days of month constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
-func EveryDay(low, high, step int) SpecOpt {
+func DayRange(low, high, step int) SpecOpt {
 	low = posMod(low-1, 31)
 	high = posMod(negDefault(high, 31)-1, 31)
 	high = max(low, high)
@@ -74,7 +74,7 @@ func LastDay(lastDays ...int) SpecOpt {
 // Adds last days of month to the last days of month constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
-func EveryLastDay(low, high, step int) SpecOpt {
+func LastDayRange(low, high, step int) SpecOpt {
 	low = posMod(low-1, 31)
 	high = posMod(negDefault(high, 31)-1, 31)
 	high = max(low, high)
@@ -100,7 +100,7 @@ func Weekday(weekdays ...time.Weekday) SpecOpt {
 // Adds days of week to the days of week constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
-func EveryWeekday(low, high time.Weekday, step int) SpecOpt {
+func WeekdayRange(low, high time.Weekday, step int) SpecOpt {
 	low = posMod(low, 7)
 	high = posMod(negDefault(high, 6), 7)
 	high = max(low, high)
@@ -126,7 +126,7 @@ func WeekdayStrict(weekdays ...time.Weekday) SpecOpt {
 // Adds days of week to the restricted days of week constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
-func EveryWeekdayStrict(low, high time.Weekday, step int) SpecOpt {
+func WeekdayStrictRange(low, high time.Weekday, step int) SpecOpt {
 	low = posMod(low, 7)
 	high = posMod(negDefault(high, 6), 7)
 	high = max(low, high)
@@ -152,7 +152,7 @@ func Hour(hours ...int) SpecOpt {
 // Adds hours to the hours constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
-func EveryHour(low, high, step int) SpecOpt {
+func HourRange(low, high, step int) SpecOpt {
 	low = posMod(low, 24)
 	high = posMod(negDefault(high, 23), 24)
 	high = max(low, high)
@@ -178,7 +178,7 @@ func Minute(minutes ...int) SpecOpt {
 // Adds minutes to the minutes constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
-func EveryMinute(low, high, step int) SpecOpt {
+func MinuteRange(low, high, step int) SpecOpt {
 	low = posMod(low, 60)
 	high = posMod(negDefault(high, 59), 60)
 	high = max(low, high)
@@ -204,7 +204,7 @@ func Second(seconds ...int) SpecOpt {
 // Adds seconds to the seconds constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
-func EverySecond(low, high, step int) SpecOpt {
+func SecondRange(low, high, step int) SpecOpt {
 	low = posMod(low, 60)
 	high = posMod(negDefault(high, 59), 60)
 	high = max(low, high)
