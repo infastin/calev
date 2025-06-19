@@ -43,7 +43,7 @@ type CronOptions struct {
 
 // Parses cron expression and returns Spec that represents it.
 // Cron expression can contain last days of month and restricted days of week.
-// Last days of week must be preceded by '^' character.
+// Last days of month must be preceded by '^' character.
 // Restricted days of week must be preceded by '&' character.
 func ParseCron(cron string, opts CronOptions) (*Spec, error) {
 	scanner := bufio.NewScanner(strings.NewReader(cron))
