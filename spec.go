@@ -40,7 +40,7 @@ type Spec struct {
 	seconds        uint64
 }
 
-// Makes new Spec with the given options.
+// New makes new Spec with the given options.
 func New(opts ...SpecOpt) *Spec {
 	s := new(Spec)
 	for _, opt := range opts {
@@ -70,7 +70,7 @@ func (s *Spec) init() {
 	}
 }
 
-// Returns the nearest date and time that satisfies Spec,
+// Next returns the nearest date and time that satisfies Spec,
 // or the next one if the given date and time already satisfy it.
 // Returns zero if no such date and time exist.
 func (s *Spec) Next(t time.Time) time.Time {

@@ -8,7 +8,7 @@ import (
 // Most of them are constraints imposed on a Spec.
 type SpecOpt func(s *Spec)
 
-// Adds one or more months to the month constraint.
+// Month adds one or more months to the month constraint.
 func Month(months ...time.Month) SpecOpt {
 	var monthSet uint16
 	for _, month := range months {
@@ -19,7 +19,7 @@ func Month(months ...time.Month) SpecOpt {
 	}
 }
 
-// Adds months to the month constraint that fall in the specified range.
+// MonthRange adds months to the month constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
 func MonthRange(low, high time.Month, step int) SpecOpt {
@@ -34,7 +34,7 @@ func MonthRange(low, high time.Month, step int) SpecOpt {
 	}
 }
 
-// Adds one or more days of month to the days of month constraint.
+// Day adds one or more days of month to the days of month constraint.
 func Day(days ...int) SpecOpt {
 	var daySet uint32
 	for _, day := range days {
@@ -45,7 +45,7 @@ func Day(days ...int) SpecOpt {
 	}
 }
 
-// Adds days to the days of month constraint that fall in the specified range.
+// DayRange adds days to the days of month constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
 func DayRange(low, high, step int) SpecOpt {
@@ -60,7 +60,7 @@ func DayRange(low, high, step int) SpecOpt {
 	}
 }
 
-// Adds one or more last days of month to the last days of month constraint.
+// LastDay adds one or more last days of month to the last days of month constraint.
 func LastDay(lastDays ...int) SpecOpt {
 	var lastDaySet uint32
 	for _, lastDay := range lastDays {
@@ -71,7 +71,7 @@ func LastDay(lastDays ...int) SpecOpt {
 	}
 }
 
-// Adds last days of month to the last days of month constraint that fall in the specified range.
+// LastDayRange adds last days of month to the last days of month constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
 func LastDayRange(low, high, step int) SpecOpt {
@@ -86,7 +86,7 @@ func LastDayRange(low, high, step int) SpecOpt {
 	}
 }
 
-// Adds one or more days of week to the days of week constraint.
+// Weekday adds one or more days of week to the days of week constraint.
 func Weekday(weekdays ...time.Weekday) SpecOpt {
 	var weekdaySet uint8
 	for _, weekday := range weekdays {
@@ -97,7 +97,7 @@ func Weekday(weekdays ...time.Weekday) SpecOpt {
 	}
 }
 
-// Adds days of week to the days of week constraint that fall in the specified range.
+// WeekdayRange adds days of week to the days of week constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
 func WeekdayRange(low, high time.Weekday, step int) SpecOpt {
@@ -112,7 +112,7 @@ func WeekdayRange(low, high time.Weekday, step int) SpecOpt {
 	}
 }
 
-// Adds one or more days of week to the restricted days of week constraint.
+// WeekdayStrict adds one or more days of week to the restricted days of week constraint.
 func WeekdayStrict(weekdays ...time.Weekday) SpecOpt {
 	var weekdayStrictSet uint8
 	for _, weekday := range weekdays {
@@ -123,7 +123,7 @@ func WeekdayStrict(weekdays ...time.Weekday) SpecOpt {
 	}
 }
 
-// Adds days of week to the restricted days of week constraint that fall in the specified range.
+// WeekdayStrictRange adds days of week to the restricted days of week constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
 func WeekdayStrictRange(low, high time.Weekday, step int) SpecOpt {
@@ -138,7 +138,7 @@ func WeekdayStrictRange(low, high time.Weekday, step int) SpecOpt {
 	}
 }
 
-// Adds one or more hours to the hours constraint.
+// Hour adds one or more hours to the hours constraint.
 func Hour(hours ...int) SpecOpt {
 	var hourSet uint32
 	for _, hour := range hours {
@@ -149,7 +149,7 @@ func Hour(hours ...int) SpecOpt {
 	}
 }
 
-// Adds hours to the hours constraint that fall in the specified range.
+// HourRange adds hours to the hours constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
 func HourRange(low, high, step int) SpecOpt {
@@ -164,7 +164,7 @@ func HourRange(low, high, step int) SpecOpt {
 	}
 }
 
-// Adds one or more minutes to the minutes constraint.
+// Minute adds one or more minutes to the minutes constraint.
 func Minute(minutes ...int) SpecOpt {
 	var minuteSet uint64
 	for _, minute := range minutes {
@@ -175,7 +175,7 @@ func Minute(minutes ...int) SpecOpt {
 	}
 }
 
-// Adds minutes to the minutes constraint that fall in the specified range.
+// MinuteRange adds minutes to the minutes constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
 func MinuteRange(low, high, step int) SpecOpt {
@@ -190,7 +190,7 @@ func MinuteRange(low, high, step int) SpecOpt {
 	}
 }
 
-// Adds one or more seconds to the seconds constraint.
+// Second adds one or more seconds to the seconds constraint.
 func Second(seconds ...int) SpecOpt {
 	var secondSet uint64
 	for _, second := range seconds {
@@ -201,7 +201,7 @@ func Second(seconds ...int) SpecOpt {
 	}
 }
 
-// Adds seconds to the seconds constraint that fall in the specified range.
+// SecondRange adds seconds to the seconds constraint that fall in the specified range.
 // The range starts at low, ends at high (inclusive, or maximum value if high is negative),
 // and increments by step (or only includes low if step is 0).
 func SecondRange(low, high, step int) SpecOpt {

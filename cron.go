@@ -41,7 +41,7 @@ type CronOptions struct {
 	WeekdayOptional bool // Day of week field may be omitted.
 }
 
-// Parses cron expression and returns Spec that represents it.
+// ParseCron parses cron expression and returns Spec that represents it.
 // Cron expression can contain last days of month and restricted days of week.
 // Last days of month must be preceded by '^' character.
 // Restricted days of week must be preceded by '&' character.
